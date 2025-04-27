@@ -1,0 +1,143 @@
+body {
+    font-family: Nunito;
+    margin: 0;
+}
+
+h1 {
+    text-align: left;
+}
+
+header {
+    background-color: #87ceeb;
+    color: white;
+    padding: 1em;
+    height: 10vh;
+    text-align: center;
+}
+
+.header-left, .header-right {
+    
+    display: inline-block;
+    width: 49%;
+}
+
+.header-left {
+    text-align: left;
+}
+
+.header-right {
+    text-align: right;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-family: Nunito;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px #87ceeb;
+    transition: 
+      background-color 0.3s, 
+      color 0.3s, 
+      box-shadow 0.1s ease, 
+      transform 0.1s ease;
+}
+  
+button:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+    
+    box-shadow: none;
+    transform: translateY(4px);
+ }
+
+main {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center sections vertically */
+    align-items: center; /* Center sections horizontally */
+    height: 76vh;
+}
+
+main > button {
+    
+    margin: 20px 200px auto;
+    flex: 1; /* Makes both sections take up equal space */
+    width: 1350px; /* Ensures the sections take the full width of the main */
+    display: flex;
+    justify-content: center; /* Centers content inside the sections */
+    align-items: center;
+    
+    
+    background-color: grey;
+}
+
+.appointment-button {
+    height: 300px;
+    background-image: linear-gradient(rgba(230, 235, 255, 0.8), rgba(230, 235, 255, 0.2)), url("../page-images/book-appointment-button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    font-size: larger;
+    border: none;
+}
+
+.medical-rec-button {
+    height: 300px;
+    background-image: linear-gradient(rgba(230, 235, 255, 0.8), rgba(230, 235, 255, 0.2)), url("../page-images/view-medical-records-button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.booked-appointment-button {
+    height: 300px;
+    background-image: linear-gradient(rgba(202, 251, 218, 0.8), rgba(202, 251, 218, 0.2)), url("../page-images/booked-appointment-button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    font-size: larger;
+    box-shadow: 0 4px rgba(202, 251, 218, 0.8);
+    border: 2px solid rgba(36, 213, 95, 0.8);
+}
+
+.my-patients-button {
+    height: 300px;
+    background-image: linear-gradient(rgba(202, 251, 218, 0.8), rgba(202, 251, 218, 0.2)), url("../page-images/my-patients-button.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    font-size: larger;
+    box-shadow: 0 4px rgba(202, 251, 218, 0.8);
+    border: 2px solid rgba(36, 213, 95, 0.8);
+}
+
+main > button:hover
+    {
+        background-color: black;
+        background-image: none;
+        color: white;
+    }
+
+
+
+footer {
+    background-color: #adadad;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2vh;
+}

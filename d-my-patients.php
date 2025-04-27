@@ -1,0 +1,136 @@
+<?php
+    session_start();
+    require_once "db-php/db.php";
+    include_once "db-php/temp-config.php";
+
+    // Ensure doctor is logged in
+    if (!isset($_SESSION["doctor_id"])) {
+        header("Location: a-login-page.php");
+    }
+
+    $doctor_id = $_SESSION["doctor_id"];
+?>
+
+<?php
+    $popupMessage = "";
+    $popupType = "";
+
+    if (isset($_SESSION["success_message"])) {
+        $popupMessage = $_SESSION["success_message"];
+        $popupType = "success";
+        unset($_SESSION["success_message"]);
+    }
+
+    if (isset($_SESSION["error_message"])) {
+        $popupMessage = $_SESSION["error_message"];
+        $popupType = "error";
+        unset($_SESSION["error_message"]);
+    }
+?>
+
+<?php
+    $sql = "SELECT DISTINCT 
+            patients.patient_id,
+            patients.patient_name, 
+            users.email, 
+            patients.patient_sex, 
+            patients.dob, 
+            patients.nic
+        FROM patients
+        INNER JOIN appointments ON patients.patient_id = appointments.patient_id
+        INNER JOIN doctor_availability ON appointments.availability_id = doctor_availability.availability_id
+        INNER JOIN users ON patients.user_id = users.user_id
+        WHERE doctor_availability.doctor_id = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $doctor_id);
+    $stmt->execute();
+    $my_patients = $stmt->get_result();
+?>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Patients - PRTS</title>
+        <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+        <script src="http://localhost/PRTS/dashboard.js"></script>
+        <script src="http://localhost/PRTS/d-booked-appointments.js"></script>
+        <link rel="stylesheet" href="./style-sheets/book-appointments.css">
+    </head>
+
+    <body>
+
+        <script>
+            const popupMessage = <?= json_encode($popupMessage) ?>;
+            const popupType = <?= json_encode($popupType) ?>;
+        </script>
+
+        <header>
+            <section class="header-left">
+                <h1>Dr. <span id="doctor-name">...</span>'s patients</h1>
+            </section>
+            <section class="header-right">
+                <button onclick="location.href='http://localhost/PRTS/doctor-dashboard.php'">Return to Dashboard</button>
+                <button onclick="location.href='http://localhost/PRTS/d-my-availability.php'">My Availability Slots</button>
+                <button onclick="location.href='http://localhost/PRTS/d-my-profile.php'">My Profile</button>
+                <button onclick="logout()">Logout</button>
+            </section>
+        </header>
+
+        <main>
+            <br>
+            <div class="results-or-list-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Patient Email</th>
+                            <th>Patient Sex</th>
+                            <th>Patient DoB</th>
+                            <th>Patient NIC</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($my_patients->num_rows > 0): ?>
+                            <?php while ($row = $my_patients->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($row["patient_name"]) ?></td>
+                                    <td><?= htmlspecialchars($row["email"]) ?></td>
+                                    <td><?= htmlspecialchars(ucfirst($row["patient_sex"])) ?></td>
+                                    <td><?= htmlspecialchars($row["dob"]) ?></td>
+                                    <td><?= htmlspecialchars($row["nic"]) ?></td>
+                                    <td>
+                                        <form action="d-medical-records.php" method="POST" style="display:inline;">
+                                            <input type="hidden" name="patient_id" value="<?= $row['patient_id'] ?>">
+                                            <button type="submit" class="medical-records-button">Medical Records</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr><td colspan="6">No patients found.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Success/Fail Popup -->
+            <div id="popupModal" class="popup-modal hidden">
+                <div class="popup-content normal-box">
+                    <p id="popupText"></p>
+                    <button id="popupOkay">Okay</button>
+                </div>
+            </div>
+
+        </main>
+        
+
+        <footer>
+            2025 - Patient Records Tracker System [PRTS]
+        </footer>
+    </body>
+</html>

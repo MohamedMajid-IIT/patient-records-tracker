@@ -1,0 +1,386 @@
+body {
+    font-family: Nunito;
+    margin: 0;
+}
+
+main {
+    padding-top: 2px;
+    padding-bottom: 50px;
+}
+
+.search-or-create-box {
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    align-items: center; 
+    border-radius: 10px;
+    max-width: 50%;
+    background-color: #87ceeb;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 15px; /* Space between items */
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Align label and input horizontally */
+    gap: 15px; /* Space between label and input */
+}
+
+.left-form-group {
+    display: flex;
+    align-items: flex-start; 
+    gap: 15px; /* Space between label and input */
+}
+
+.box-padding {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+}
+
+.change-pw-input {
+    width: 5px;
+}
+
+input {
+    padding: 5px;
+    font-size: 12px;
+    font-family: Nunito;
+    flex: 1; /* Make inputs take the remaining space */
+    border: 1px solid #ccc;
+    border-radius: 8px;    
+}
+
+textarea {
+    resize:vertical;
+    font-family: Nunito;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.rounded-textarea {
+    
+    background-color: #ffffff;
+    border-radius: 10px;
+    align-items: center;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 150px;
+    padding: 20px 15px;
+    
+}
+
+.fixed-height {
+    min-height: 100px;
+}
+
+.small-height {
+    height: 15px;
+}
+
+.max-width {
+    min-width: 100%;
+}
+.three-four-width {
+    width: 75%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.big-block {
+    display: flex;
+    justify-content: space-between; /* push the two .block elements to the sides */
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.block label {
+    margin-right: 15px;
+}
+
+.results-or-list-box {
+    max-width: 75%;
+    background-color: #87ceeb;
+    margin: 0 auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+}
+
+.wide-table {
+    max-width: 85%;
+}
+
+form {
+    display: inline;
+}
+
+.wider-table {
+    max-width: 90%;
+}
+
+.widest-table {
+    max-width: 99%;
+}
+
+.narrow-table{
+    max-width: 50%;
+}
+
+h1 {
+    text-align: left;
+}
+
+header {
+    background-color: #87ceeb;
+    color: white;
+    padding: 1em;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left, .header-right {
+    display: inline-block;
+}
+
+.header-left {
+    text-align: left;
+    width: 40%;
+}
+
+.header-right {
+    text-align: right;
+    width: 60%;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-family: Nunito;
+    font-size: 16px;
+    cursor: pointer;
+    
+    box-shadow: 0 4px #87ceeb;
+    transition: 
+      background-color 0.3s, 
+      color 0.3s, 
+      box-shadow 0.1s ease, 
+      transform 0.1s ease;
+  }
+  
+button:hover {
+
+    background-color: black;
+    border-color: black;
+    color: white;
+    
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  
+
+.centered-button {
+    justify-content: center;
+    min-width: 100%;
+    display: flex;
+}
+
+footer {
+    background-color: #adadad;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid rgba(136, 136, 136, 0.5);
+    padding: 10px;
+    text-align: center;
+}
+
+/* top-left corner of the table */
+thead tr th:first-child {
+    border-top-left-radius: 10px;
+}
+
+/* top-right corner of the table */
+thead tr th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* bottom-left corner of the table */
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+/* bottom-right corner of the table */
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+    color: white;
+}
+
+h2 {    
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.drop-down-select {
+    padding: 5px;
+    font-size: 14px;
+    font-family: Nunito;
+    border-radius: 5px;
+    width: 40%;
+    margin-top: 5px;
+    margin-left: 5px;
+    }
+
+.centered {
+    display: block;
+    margin-left: 37.5%; /* vertical margin optional */    
+}
+    
+
+.popup-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9999;
+
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.popup-modal.hidden {
+    display: none;
+}
+
+.wide-box {
+    max-width: 750px;
+    width: 750px;
+}
+
+.smallest-width {
+    width: 150px;
+}
+
+.normal-box {
+    max-width: 550px;
+    width: 90%;
+}
+
+.popup-content {
+    background-color: #ffffff;
+    padding: 20px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    overflow: hidden; 
+}
+
+.popup-body {
+    /* scroll inside the rounded .popup-content */
+    max-height: 80vh;
+    overflow-y: auto;
+    
+    /* your existing padding/text‑styles go here */
+    padding: 20px 30px;
+    text-align: center;
+}
+  
+.popup-body p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.popup-modal.success .popup-content {
+    border-left: 6px solid #28a745;
+}
+
+.popup-modal.error .popup-content {
+    border-left: 6px solid #dc3545;
+}
+
+.popup-modal.cancel .popup-content {
+    border-left: 6px solid #ffc107;
+}
+
+#appointment-notes {
+    width: 100%;
+    height: 150px;
+    resize: none; /* Prevent resizing */
+    padding: 10px;
+    font-size: 14px;
+    font-family: Nunito, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+    min-width: 80px;
+    text-align: right; 
+    font-size: 15px;
+}
+
+.asterisk-label::after {
+    content:" *";
+    color: red;
+    font-weight: normal;  
+}
+
+label.asterisk-label { 
+    white-space: nowrap; 
+}

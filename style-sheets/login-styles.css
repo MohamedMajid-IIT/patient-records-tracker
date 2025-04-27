@@ -1,0 +1,215 @@
+body {        
+    font-family: Nunito;
+    margin: 0;
+}
+
+header {
+    background-color: #87ceeb;
+    color: white;
+    padding: 1em;
+    height: 10vh;
+    text-align: center;
+}
+
+.body-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+      
+.left-section, .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+      
+.left-section {
+    background-color: rgb(138, 161, 255);
+    background-position: center; /* Centers the image */
+    background-color: rgba(230, 235, 255, 0.8); /* Black with 50% transparency */
+    background-blend-mode: overlay; /* Blends the overlay with the image */
+}
+      
+.right-section {
+    background-color: rgb(27, 242, 98);
+    background-position: center; /* Centers the image */
+    background-color: rgba(202, 251, 218, 0.8); /* Black with 50% transparency */
+    background-blend-mode: overlay; /* Blends the overlay with the image */
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid #87ceeb;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-family: Nunito;
+    font-size: 16px;
+    cursor: pointer;
+    
+    box-shadow: 0 4px #87ceeb;
+    transition: 
+      background-color 0.3s, 
+      color 0.3s, 
+      box-shadow 0.1s ease, 
+      transform 0.1s ease;
+}
+  
+button:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+    
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+footer {
+    background-color: #adadad;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2vh;
+}
+
+/* Styles for the pop-up */
+.popup {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9999;
+
+    overflow-y: auto;
+    padding: 20px 0;
+}
+  
+.popup.show {
+    display: flex;
+}
+
+  
+.popup-content {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    max-height: 80vh; 
+    overflow-y: auto;  
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+    text-align: left;
+}
+
+.form-input {
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.btn-submit:hover {
+    border-color: #4caf50;
+    background-color: #4caf50;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    gap: 10px; /* Adds space between radio buttons and labels */
+    margin-bottom: 20px;
+}
+
+.popup-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9999;
+
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.popup-modal.hidden {
+    display: none;
+}
+
+.popup-content {
+    background-color: #ffffff;
+    padding: 10px 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    overflow: hidden; 
+}
+
+.popup-body {
+    /* scroll inside the rounded .popup-content */
+    max-height: 80vh;
+    overflow-y: auto;
+    
+    /* your existing padding/text‑styles go here */
+    padding: 0px 10px;
+    text-align: center;
+}
+  
+.popup-body p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.popup-modal.success .popup-content {
+    border-left: 6px solid #28a745;
+}
+
+.popup-modal.error .popup-content {
+    border-left: 6px solid #dc3545;
+}
+
+.popup-modal.cancel .popup-content {
+    border-left: 6px solid #ffc107;
+}
