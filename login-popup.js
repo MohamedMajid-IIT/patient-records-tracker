@@ -44,29 +44,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  const phoneInput = document.getElementById('phone');
+  // Select ALL input elements with type="tel"
+  const phoneInput = document.querySelectorAll('input[type="tel"]');
 
-  // Check if the element with id="phone"  exists
-  if (phoneInput) {
-      phoneInput.addEventListener('keydown', function(event) {
-          // Get the key that was pressed
-          const key = event.key;
+  // Checking if any elements with type="tel" exist
+  if (phoneInput.length > 0) {
+    phoneInput.forEach(function(inputElement) {
+        // Event listener for the current element in the loop
+        inputElement.addEventListener('keydown', function(event) {
+            // This is to get the key that was pressed
+            const key = event.key;
 
-          // Allowed keys, digits, symbols, control buttons
-          const allowedControlKeys = [
-              'Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight',
-              'ArrowUp', 'ArrowDown', 'Home', 'End'
-          ];
-          const isDigit = key >= '0' && key <= '9';
-          const isAllowedControlKey = allowedControlKeys.includes(key);
-          const isModifierKeyPressed = event.ctrlKey || event.metaKey; // e.g: Ctrl+C, Ctrl+V
+            // Allowed keys, digits, symbols, control buttons
+            const allowedControlKeys = ['Backspace', 'Delete', 'Tab', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+            const isDigit = key >= '0' && key <= '9';
+            const isAllowedControlKey = allowedControlKeys.includes(key);
+            const isModifierKeyPressed = event.ctrlKey || event.metaKey; // e.g: Ctrl+C, Ctrl+V
 
-          // If the key or key combination is NOT in the allowed list then prevent input
-          if (!(isDigit || isAllowedControlKey || isModifierKeyPressed)) {
-              event.preventDefault();
-          }
-      });
-  } else {
-      console.error("Input element with ID 'phone' not found.");
-  }
+            // If the key or key combination is NOT in the allowed list then prevent input
+            if (!(isDigit || isAllowedControlKey || isModifierKeyPressed)) {
+                event.preventDefault();
+            }
+        });
+    }); 
+}
 });

@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt) {
         $stmt->bind_param("iss", $patient_id, $title, $description);
         if ($stmt->execute()) {
-            $_SESSION["success_message"] = "You have created a medical record for $title successfully!";
+            $_SESSION["success_message"] = "You have created the  medical record collection '$title' successfully!";
         } else {
             $_SESSION["error_message"] = "Medical record creation was unsuccessful!";
         }

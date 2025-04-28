@@ -77,7 +77,12 @@
         $password = trim($_POST["password"]);
 
         // Fetch user details from the 'users' table
-        $query = $conn->prepare("SELECT user_id, user_password, role FROM users WHERE email = ?");
+        $query = $conn->prepare("SELECT
+                                    user_id,
+                                    user_password,
+                                    role
+                                FROM users
+                                WHERE email = ?");
         $query->bind_param("s", $email);
         $query->execute();
         $query->store_result();
@@ -120,10 +125,15 @@
                     exit();
                 }
             } else {
-                echo "<script>alert('Invalid email or password'); window.location.href='http://localhost/PRTS/a-login-page.php';</script>";
+                $_SESSION["error_message"] = "Invalid email or password.";
+                header("Location: a-login-page.php");
+                exit();
+                
             }
         } else {
-            echo "<script>alert('User not found'); window.location.href='http://localhost/PRTS/a-login-page.php';</script>";
+            $_SESSION["error_message"] = "User not found.";
+                header("Location: a-login-page.php");
+                exit();
         }
 
         $query->close();
@@ -219,10 +229,10 @@
 
                             <label class="form-label">Sex:</label>
                             <div class="radio-group">
-                                <input type="radio" id="male" name="sex" value="Male">
+                                <input type="radio" id="male" name="sex" value="Male" required>
                                 <label for="male">Male</label>
                             
-                                <input type="radio" id="female" name="  sex" value="Female">
+                                <input type="radio" id="female" name="sex" value="Female">
                                 <label for="female">Female</label>
                             </div>
 
@@ -293,7 +303,7 @@
 
                             <label class="form-label">Sex:</label>
                             <div class="radio-group">
-                                <input type="radio" id="male" name="sex" value="Male">
+                                <input type="radio" id="male" name="sex" value="Male" required>
                                 <label for="male">Male</label>
                             
                                 <input type="radio" id="female" name="sex" value="Female">

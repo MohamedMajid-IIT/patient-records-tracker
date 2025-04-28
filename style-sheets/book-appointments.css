@@ -10,7 +10,7 @@ main {
 
 .search-or-create-box {
     display: flex;
-    justify-content: center; /* Center the form horizontally */
+    justify-content: center;
     align-items: center; 
     border-radius: 10px;
     max-width: 50%;
@@ -24,20 +24,20 @@ main {
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 15px; /* Space between items */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
 .form-group {
     display: flex;
-    align-items: center; /* Align label and input horizontally */
-    gap: 15px; /* Space between label and input */
+    align-items: center;
+    gap: 15px;
 }
 
 .left-form-group {
     display: flex;
     align-items: flex-start; 
-    gap: 15px; /* Space between label and input */
+    gap: 15px;
 }
 
 .box-padding {
@@ -54,7 +54,7 @@ input {
     padding: 5px;
     font-size: 12px;
     font-family: Nunito;
-    flex: 1; /* Make inputs take the remaining space */
+    flex: 1;
     border: 1px solid #ccc;
     border-radius: 8px;    
 }
@@ -103,7 +103,7 @@ textarea {
 
 .big-block {
     display: flex;
-    justify-content: space-between; /* push the two .block elements to the sides */
+    justify-content: space-between;
     width: 100%;
     margin-bottom: 15px;
 }
@@ -281,7 +281,7 @@ h2 {
 
 .centered {
     display: block;
-    margin-left: 37.5%; /* vertical margin optional */    
+    margin-left: 37.5%;  
 }
     
 
@@ -334,7 +334,6 @@ h2 {
     max-height: 80vh;
     overflow-y: auto;
     
-    /* your existing padding/text‑styles go here */
     padding: 20px 30px;
     text-align: center;
 }
@@ -359,7 +358,7 @@ h2 {
 #appointment-notes {
     width: 100%;
     height: 150px;
-    resize: none; /* Prevent resizing */
+    resize: none;
     padding: 10px;
     font-size: 14px;
     font-family: Nunito, sans-serif;

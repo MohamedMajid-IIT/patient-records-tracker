@@ -32,10 +32,15 @@
     $sql = "SELECT DISTINCT 
             patients.patient_id,
             patients.patient_name, 
-            users.email, 
+            users.email,
+            users.user_phone,
             patients.patient_sex, 
             patients.dob, 
-            patients.nic
+            patients.nic,
+            patients.emergency_contact_name,
+            patients.emergency_contact_relationship,
+            patients.emergency_contact_phone,
+            patients.emergency_contact_email
         FROM patients
         INNER JOIN appointments ON patients.patient_id = appointments.patient_id
         INNER JOIN doctor_availability ON appointments.availability_id = doctor_availability.availability_id
@@ -57,7 +62,7 @@
         <title>My Patients - PRTS</title>
         <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
         <script src="http://localhost/PRTS/dashboard.js"></script>
-        <script src="http://localhost/PRTS/d-booked-appointments.js"></script>
+        <script src="http://localhost/PRTS/d-my-patients.js"></script>
         <link rel="stylesheet" href="./style-sheets/book-appointments.css">
     </head>
 
@@ -82,15 +87,16 @@
 
         <main>
             <br>
-            <div class="results-or-list-box">
+            <div class="results-or-list-box wide-table">
                 <table>
                     <thead>
                         <tr>
                             <th>Patient Name</th>
-                            <th>Patient Email</th>
-                            <th>Patient Sex</th>
-                            <th>Patient DoB</th>
-                            <th>Patient NIC</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Sex</th>
+                            <th>DoB</th>
+                            <th>NIC</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -100,6 +106,7 @@
                                 <tr>
                                     <td><?= htmlspecialchars($row["patient_name"]) ?></td>
                                     <td><?= htmlspecialchars($row["email"]) ?></td>
+                                    <td><?= htmlspecialchars($row["user_phone"]) ?></td>
                                     <td><?= htmlspecialchars(ucfirst($row["patient_sex"])) ?></td>
                                     <td><?= htmlspecialchars($row["dob"]) ?></td>
                                     <td><?= htmlspecialchars($row["nic"]) ?></td>
@@ -108,6 +115,15 @@
                                             <input type="hidden" name="patient_id" value="<?= $row['patient_id'] ?>">
                                             <button type="submit" class="medical-records-button">Medical Records</button>
                                         </form>
+                                        <button
+                                            class="view-patient-btn"
+                                            data-patient-id="<?= $row['patient_id'] ?>"
+                                            data-emergency-contact-name="<?= htmlspecialchars($row['emergency_contact_name']) ?>"
+                                            data-emergency-contact-relationship="<?= htmlspecialchars($row['emergency_contact_relationship']) ?>"
+                                            data-emergency-contact-phone="<?= htmlspecialchars($row['emergency_contact_phone']) ?>"
+                                            data-emergency-contact-email="<?= htmlspecialchars($row['emergency_contact_email']) ?>">
+                                            Emergency Contact
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>
@@ -116,6 +132,19 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Patient Details Popup -->
+            <div id="patient-popup" class="popup-modal hidden">
+                <div class="popup-content normal-box">
+                    <h2>Emergency Contact Details</h2>
+                    <p style="text-align: left;" ><strong>Name:</strong> <span id="popup-patient-emergency-contact-name"></span></p>
+                    <p style="text-align: left;" ><strong>Relationship:</strong> <span id="popup-patient-emergency-contact-relationship"></span></p>
+                    <p style="text-align: left;" ><strong>Phone:</strong> <span id="popup-patient-emergency-contact-phone"></span></p>
+                    <p style="text-align: left;" ><strong>Email:</strong> <span id="popup-patient-emergency-contact-email"></span></p>
+
+                    <button id="close-patient-popup">Close</button>
+                </div>
             </div>
 
             <!-- Success/Fail Popup -->

@@ -139,7 +139,7 @@
         $types .= "s";
     }
 
-    $sql .= " GROUP BY doctor_availability.availability_id";
+    $sql .= " GROUP BY doctor_availability.available_date DESC";
 
     // Prepare and bind
     $stmt = $conn->prepare($sql);

@@ -37,16 +37,16 @@ header {
       
 .left-section {
     background-color: rgb(138, 161, 255);
-    background-position: center; /* Centers the image */
-    background-color: rgba(230, 235, 255, 0.8); /* Black with 50% transparency */
-    background-blend-mode: overlay; /* Blends the overlay with the image */
+    background-position: center;
+    background-color: rgba(230, 235, 255, 0.8);
+    background-blend-mode: overlay;
 }
       
 .right-section {
     background-color: rgb(27, 242, 98);
-    background-position: center; /* Centers the image */
-    background-color: rgba(202, 251, 218, 0.8); /* Black with 50% transparency */
-    background-blend-mode: overlay; /* Blends the overlay with the image */
+    background-position: center;
+    background-color: rgba(202, 251, 218, 0.8);
+    background-blend-mode: overlay;
 }
 
 button {
@@ -152,8 +152,8 @@ footer {
 
 .radio-group {
     display: flex;
-    align-items: center; /* Aligns items vertically */
-    gap: 10px; /* Adds space between radio buttons and labels */
+    align-items: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -192,7 +192,6 @@ footer {
     max-height: 80vh;
     overflow-y: auto;
     
-    /* your existing padding/text‑styles go here */
     padding: 0px 10px;
     text-align: center;
 }

@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="centered-button">
-                        <button type="submit">Create Medical Record</button>
+                        <button type="submit">Create Medical Record Collection</button>
                     </div>
                 </form>
             </div>
