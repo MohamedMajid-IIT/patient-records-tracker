@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once "db-php/db.php"; // Ensure you have a file that handles database connection
+    require_once "db-php/db.php";
 ?>
 
 <?php
@@ -35,7 +35,7 @@
     // Get the patient's ID from the session
     $patient_id = $_SESSION["patient_id"];
 
-    // Appointment cancellation FIRST
+    // Appointment cancellation
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["appointment_id"])) {
         $appointment_id = $_POST["appointment_id"];
 
@@ -53,7 +53,7 @@
         exit();
     }
 
-    // Get all appointments for this patient
+    // Get all appointments for the logged in patient
     $appointmentQuery = "SELECT
                             appointments.appointment_id,
                             appointments.status,

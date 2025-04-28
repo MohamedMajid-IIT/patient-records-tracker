@@ -56,7 +56,7 @@
             $insertDocAvailability->close();
         }
     }
-    // Fetch availability records for display
+    // Fetch availability records
     $selectDocAvailability = $conn->prepare("SELECT 
                                                 availability_id,
                                                 available_date,
@@ -187,10 +187,6 @@
             </div>
         </main>
         
-        <footer>
-            2025 - Patient Records Tracker System [PRTS]
-        </footer>
-
         <?php
             $selectDocAvailability->close();
             $conn->close();
@@ -203,6 +199,10 @@
                 <button id="popupOkay">Okay</button>
             </div>
         </div>
+
+        <footer>
+            2025 - Patient Records Tracker System [PRTS]
+        </footer>
 
     </body>
 </html>

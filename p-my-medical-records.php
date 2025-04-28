@@ -134,7 +134,7 @@
             <br>
             
 
-            <!-- Success/Fail Popup for Medical Records and Medical Record Files -->
+            <!-- Success/Fail Popup -->
             <div id="popupModal" class="popup-modal hidden">
                 <div class="popup-content normal-box">
                     <p id="popupText"></p>

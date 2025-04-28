@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-        // === Appointment cancellation modal logic ===
+        // Appointment cancellation popup logic
         const cancelButtons = document.querySelectorAll(".cancel-trigger");
         const cancelModal = document.getElementById("cancelModal");
         const confirmCancel = document.getElementById("confirmCancel");

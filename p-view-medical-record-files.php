@@ -2,9 +2,17 @@
     session_start();
     require_once "db-php/db.php";
 
+    // Check if the patient is logged in
+    if (!isset($_SESSION["patient_id"])) {
+        $_SESSION["error_message"] = "Access denied. Please log in as a patient.";
+        header("Location: a-login-page.php");
+        exit();
+    }
+
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        $_SESSION["error_message"] = "The medical record is invalid or unavailable.";
         header("Location: p-my-medical-records.php");
-        die("The medical record is invalid or unavailable.");
+        exit();
     }
 ?>
 
@@ -24,22 +32,19 @@
         unset($_SESSION["error_message"]);
     }
 ?>
-    
-<?php
-    // Check if the patient is logged in
-    if (!isset($_SESSION["patient_id"])) {
-        die("Access denied. Please log in as a patient.");
-    }
 
+<?php
     // Get the patient's ID from the session
     $patient_id = $_SESSION["patient_id"];
-?>
 
-<?php
+
     // Get medical_record_id from URL
     if (!isset($_POST["medical_record_id"])) {
-        die("Medical Record ID not provided.");
+        $_SESSION["error_message"] = "Medical Record ID not provided.";
+        header("Location: p-my-medical-records.php");
+        exit();
     }
+    
     $medical_record_id = intval($_POST["medical_record_id"]);
 
     // SQL to fetch medical record files with uploader name logic
@@ -152,7 +157,7 @@
             </div>
             <br>
 
-            <!-- Delete Confirmation Modal -->
+            <!-- Delete File Confirmation Popup -->
             <div id="deleteFilePopup" class="popup-modal cancel hidden">
                 <div class="popup-content normal-box">
                     <p>Are you sure you want to delete this file?</p>

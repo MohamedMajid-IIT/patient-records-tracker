@@ -17,7 +17,7 @@
     $patient_id = $_SESSION["patient_id"];
     $appointment_id = $_POST["appointment_id"];
 
-    // Select appointment_notes that belongs to the appointment and loged in patient
+    // Select appointment_notes that belongs to the appointment and logged in patient
     $stmt = $conn->prepare("SELECT appointment_notes FROM appointments WHERE appointment_id = ? AND patient_id = ?");
     $stmt->bind_param("ii", $appointment_id, $patient_id);
     $stmt->execute();

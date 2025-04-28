@@ -43,7 +43,7 @@
     $stmt->fetch();
     $stmt->close();
 
-    // Fetch files
+    // Fetch appointment files
     $stmt = $conn->prepare("SELECT appointment_file_id, appointment_file_name, appointment_file_path, appointment_file_type, appointment_file_created_at 
                             FROM appointment_files
                             WHERE appointment_id = ? AND appointment_file_doctor_id = ?");
