@@ -10,7 +10,7 @@
         $password = $_POST["password"];
         $role = $_POST["role"];
 
-        // Start a transaction
+        // Start  transaction
         $conn->begin_transaction(); 
 
         try {
@@ -18,7 +18,7 @@
             $insertUser = $conn->prepare("INSERT INTO users (email, user_phone, user_password, role) VALUES (?, ?, ?, ?)");
             $insertUser->bind_param("ssss", $email, $phone, $password, $role);
             $insertUser->execute();
-            $user_id = $conn->insert_id; // Get the inserted user's ID
+            $user_id = $conn->insert_id;
 
             if ($role === "patient") {
 
@@ -110,6 +110,7 @@
                     // Redirect to patient dashboard
                     header("Location: http://localhost/PRTS/patient-dashboard.php");
                     exit();
+
                 } elseif ($role === "doctor") {
                     $query = $conn->prepare("SELECT doctor_id, doctor_name FROM doctors WHERE user_id = ?");
                     $query->bind_param("i", $user_id);

@@ -6,6 +6,7 @@
 
     $targetDirectory = "appointment-file-uploads/";
     $allowedTypes = ["pdf", "jpg", "jpeg", "png", "webp", "avif", "doc", "docx"];
+    $maxFileSize = 10 * 1024 * 1024;
     
     $failedUploadCounter = 0;
     
@@ -21,6 +22,12 @@
             if (!in_array($fileExt, $allowedTypes)) {
                 $failedUploadCounter++;
                 continue; // Skip unsupported files
+            }
+
+            // Check file size
+            if ($_FILES['appointment_files']['size'][$index] > $maxFileSize) {
+                $failedUploadCounter++;
+                continue;
             }
     
             $uniqueFileName = uniqid("record_") . "." . $fileExt;
@@ -41,7 +48,9 @@
         }
     
         if ($failedUploadCounter > 0) {
-            $_SESSION["error_message"] = "One or more files failed to upload. Ensure that supported file types are used: PDF, JPG, JPEG, PNG, WEBP, AVIF, DOC, DOCX.";
+            $_SESSION["error_message"] = "One or more files failed to upload. Ensure that supported file types are used (PDF, JPG, JPEG, PNG, WEBP, AVIF, DOC, DOCX) and each file is under 10MB.";
+            header("Location: d-booked-appointments.php");
+            exit();
         } else {
             $_SESSION["success_message"] = "File(s) uploaded successfully!";
             header("Location: d-booked-appointments.php");
@@ -49,6 +58,8 @@
         }
     } else {
         $_SESSION["error_message"] = "File upload failed. No files received.";
+        header("Location: d-booked-appointments.php");
+        exit();
     }
 
 ?>

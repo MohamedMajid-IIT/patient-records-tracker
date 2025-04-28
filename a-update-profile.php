@@ -5,7 +5,7 @@
     if (isset($_SESSION["doctor_id"])){
         $doctor_id = $_SESSION["doctor_id"];
 
-        // Get doctor details from POST
+        // Get doctor details from POST request
         $doctor_name = $_POST['doctor_name'];
         $email = $_POST['email'];
         $phone = $_POST['user_phone'];
@@ -83,7 +83,7 @@
 
     }
 
-// If neither doctor nor patient is logged in
+// If neither doctor nor patient is logged in, kick to the login screen
 $_SESSION["popupMessage"] = "Error updating profile.";
 $_SESSION["popupType"] = "error";
 header("Location: a-login-page.php");

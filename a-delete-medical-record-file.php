@@ -6,12 +6,14 @@ require_once "db-php/db.php";
 $user_id = $_SESSION['user_id'] ?? null;
 $role = $_SESSION['role'] ?? null;
 
+//Kick user if they are not logged in
 if ($user_id === null) {
     $_SESSION["error_message"] = "You must be logged in access this page.";
     header("Location: a-login-page.php");
     exit();
 }
 
+//Deny access to the user if they are not accessing via a POST request
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     $_SESSION["error_message"] = "Invalid request.";
     if ($role == "patient") {
@@ -43,7 +45,7 @@ if (!$medical_record_file_id || !$medical_record_id) {
     }
 }
 
-// Step 1: Get file path
+// Step 1: Get the file path for the medical record file
 $sql = "SELECT medical_record_file_path FROM medical_record_files WHERE medical_record_file_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $medical_record_file_id);
@@ -67,7 +69,7 @@ if ($result->num_rows !== 1) {
 $row = $result->fetch_assoc();
 $file_path = $row["medical_record_file_path"];
 
-// Step 2: Delete from DB
+// Step 2: Delete the medical record file from the database
 $delete_sql = "DELETE FROM medical_record_files WHERE medical_record_file_id = ?";
 $delete_stmt = $conn->prepare($delete_sql);
 $delete_stmt->bind_param("i", $medical_record_file_id);

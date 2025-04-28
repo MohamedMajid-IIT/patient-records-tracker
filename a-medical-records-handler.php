@@ -2,7 +2,7 @@
 session_start();
 require_once "db-php/db.php";
 
-// Determine who is logged in
+// Determine whether patient/ doctor is logged in and store the patient/doctor id in a variable
 if (isset($_SESSION["patient_id"])) {
     $patient_id = $_SESSION["patient_id"];
 } elseif (isset($_SESSION["doctor_id"]) && isset($_POST["patient_id"])) {

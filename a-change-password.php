@@ -6,7 +6,7 @@
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
 
-    
+    // Ensures that the new password and confirm password are the same
     if ($new_password !== $confirm_password) {
         $_SESSION["popupMessage"] = "New passwords do not match.";
         $_SESSION["popupType"] = "error";
@@ -56,7 +56,7 @@
         exit;
     }
     
-    // If user is found and password matches
+    // If user is found and entered password is matching current password
     if ($user && $user["user_password"] === $current_password) {
         $stmt = $conn->prepare("UPDATE users SET user_password = ? WHERE user_id = ?");
         $stmt->bind_param("si", $new_password, $user["user_id"]);

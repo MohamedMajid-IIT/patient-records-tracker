@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 const appointmentId = button.getAttribute("data-id");
                 const notes = button.getAttribute("data-notes") || "";
     
-                // Check if doctor modal exists
+                // Check if doctor notes popup  exists
                 if (notesPopup && notesAppointmentId && notesTextarea) {
                     notesAppointmentId.value = appointmentId;
                     notesTextarea.value = notes;
                     notesPopup.classList.remove("hidden");
                 }
     
-                // Check if patient modal exists
+                // Check if patient notes popup exists
                 if (notesPopup && notesTextarea) {
                     notesTextarea.textContent = notes;
                     notesPopup.classList.remove("hidden");
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     
-        // Doctor cancel button
+        // Notes cancel button - Doctors
         if (cancelNotesButton && notesPopup) {
             cancelNotesButton.addEventListener("click", () => {
                 notesPopup.classList.add("hidden");
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     
-        // Patient OK button
+        // Notes Ok button - Patients
         if (okayNotesButton && notesPopup) {
             okayNotesButton.addEventListener("click", () => {
                 notesPopup.classList.add("hidden");
@@ -185,13 +185,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 popup.classList.remove("hidden");
             });
         });
-    
+        
+        //Click close button to close popup
         if (closeBtn && popup) {
             closeBtn.addEventListener("click", () => {
                 popup.classList.add("hidden");
             });
     
-            // Optional: Click outside modal to close
+            //Click outside popup to close popup
             popup.addEventListener("click", (e) => {
                 if (e.target === popup) {
                     popup.classList.add("hidden");
